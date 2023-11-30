@@ -84,7 +84,15 @@ done
 -- Lemma 3.3 page 36 Intro to Group Theory ii)
 lemma binomial_coefsadf_prop2 (i : ℕ) (hp : p.Prime) (h : 1 ≤ i ∧ i < p) : p ∣ Nat.choose p i := by
 apply Nat.Prime.dvd_choose hp
+
 exact h.right
+
+have h': p+1 ≤ p+i
+apply add_le_add_left
+apply h.left
+exact Nat.add_one_le_iff h'
+
+apply le_refl
 done
 
 #check binomial_coefsadf_prop2
